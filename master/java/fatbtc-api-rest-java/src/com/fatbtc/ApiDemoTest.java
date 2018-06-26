@@ -14,12 +14,14 @@ public class ApiDemoTest{
 	private static String url="https://www.fatbtc.us";//交易/提现
 	
 	//从FatBTC申请的 api_secretapiKey和apiSecret
-	private static String apiKey="73bb2722-fbf2-4e8d-bb7f-16273230a7ca";
-	private static String apiSecret="a0178004ec331b1b9d04f86cd5617f3e";
+	private static String apiKey="";
+	private static String apiSecret="";
 	
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
+		getSystemTimeStamp();
+		
 //		createOrder();
 //		cancelOrder();
 //		withdraw();
@@ -28,7 +30,6 @@ public class ApiDemoTest{
 //		getSingleOrderDetail();
 //		getOrderList();
 //		getSuccessedOrders();
-//		getSystemTimeStamp();
 		
 	}
 	
