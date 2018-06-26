@@ -73,7 +73,7 @@ public class ApiDemo{
 			String params = mapper.writeValueAsString(map);
 			String response = HttpUtil.doPostJson(reqUrl, params);
 			System.out.println(response);
-//			成功：{"status":1,"message":"success","data":1}
+//			成功：{"status":1,"msg":"success","data":1}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class ApiDemo{
 			String params = mapper.writeValueAsString(map);
 			String response = HttpUtil.doDeleteJson(reqUrl, params);
 			System.out.println(response);
-//			成功：{"status":1,"message":"success","data":100000}
+//			成功：{"status":1,"msg":"success","data":100000}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,7 +150,7 @@ public class ApiDemo{
 			String params = mapper.writeValueAsString(map);
 			String response = HttpUtil.doPostJson(reqUrl, params);
 			System.out.println(response);
-//			成功：{"status":1,"message":"success","data":1}
+//			成功：{"status":1,"msg":"success","data":1}
 
 		} catch (Exception e) {
 			e.printStackTrace();
