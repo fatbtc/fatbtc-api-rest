@@ -22,14 +22,14 @@ public class ApiDemo{
 	public static void main(String[] args) {
 		getSystemTimeStamp();
 		
-//		createOrder();
-//		cancelOrder();
-//		withdraw();
-//		getSingleCurrency();
-//		getCurrencyList();
-//		getSingleOrderDetail();
-//		getOrderList();
-//		getSuccessedOrders();
+		createOrder();
+		cancelOrder();
+		withdraw();
+		getSingleCurrency();
+		getCurrencyList();
+		getSingleOrderDetail();
+		getOrderList();
+		getSuccessedOrders();
 		
 	}
 	
@@ -244,7 +244,7 @@ public class ApiDemo{
 	 * 获得单个订单的交易明细（仅返回当前apikey对应数据）
 	 * 
 	 * symbol:交易对名称，如BTCCNY、LTCCNY、ETHCNY
-	 * id:交易id
+	 * id:订单id
 	 * api_key (string): api_key可以在用户中心中获取 ,
 	 * timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
 	 * sign_type (string): 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
@@ -381,10 +381,11 @@ public class ApiDemo{
 	
 	/**
 	 * 获得系统时间戳
-	 * timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
+	 * url:/m/timestamp/{timestamp}
+	 * request:timestamp 本地时间戳
+	 * response：{"status":1,"msg":"success","data":"1529995831"}, 成功时：data值为系统时间戳
 	 */
 	public static void getSystemTimeStamp() {
-//		/m/timestamp/{timestamp}
 		String reqUrl = url+"/m/timestamp/";
 		
 		try {
