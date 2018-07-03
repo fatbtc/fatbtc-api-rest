@@ -91,9 +91,5 @@ public class MD5Util {
 
 		return actualSign;
 	}
-	public static void main(String args[]) {
-//		String s=getMD5String("123", 20);
-//		System.out.println(s.length());
-//		System.out.println(s);
-	}
+
 }

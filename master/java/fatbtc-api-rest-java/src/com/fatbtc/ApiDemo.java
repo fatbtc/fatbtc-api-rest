@@ -381,6 +381,7 @@ public class ApiDemo{
 	
 	/**
 	 * 获得系统时间戳
+	 * 交易请求返回 ILLEGAL_TIMESTAMP时，使用该方法返回的时间戳
 	 * url:/m/timestamp/{timestamp}
 	 * request:timestamp 本地时间戳
 	 * response：{"status":1,"msg":"success","data":"1529995831"}, 成功时：data值为系统时间戳
