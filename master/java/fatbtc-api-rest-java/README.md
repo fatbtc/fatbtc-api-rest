@@ -315,7 +315,7 @@ getOrderList()
 		}
 
 
-- 8.获得已成交记录（仅返回当前apikey对应数据）  
+- 9.获得已成交记录（仅返回当前apikey对应数据）  
 getSuccessedOrders() 
 
 		url:/m/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
