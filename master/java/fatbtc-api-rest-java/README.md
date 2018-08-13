@@ -84,6 +84,7 @@ createOrder()
 		request: 
 		{
 			api_key: api_key可以在用户中心中获取 ,
+			site_id: 1,
 			o_no: 订单编号，在当前交易对需唯一 ,
 			o_price_type: 价格类型：limit、market，分别代表限价单、市价单 ,
 			o_type: 订单类型：buy、sell，分别代表卖出、买入 ,
@@ -115,6 +116,7 @@ cancelOrder()
 			api_key: api_key可以在用户中心中获取 ,
 			id: 订单ID ,
 			o_no: 订单号 ,
+			site_id: 1,
 			sign: 使用api_secret对请求参数进行签名的结果 ,
 			sign_type: 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
 			symbol: 交易对名称，如BTCCNY、LTCCNY、ETHCNY ,
@@ -140,6 +142,7 @@ withdraw()
 			addr: 提币地址 ,
 			amount: 提币数量 ,
 			api_key: api_key可以在用户中心中获取 ,
+			site_id: 1,
 			currency: 币类型，如BTC、LTC、ETH ,
 			sign: 使用api_secret对请求参数进行签名的结果 ,
 			sign_type: 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
@@ -157,11 +160,12 @@ withdraw()
 - 5.获得单个币资产  
 getSingleCurrency() 
 
-		url:/m/api/a/account
+		url:/m/api/a/account/{site_id}/{currency}/{api_key}/{timestamp}/{sign_type}/{sign}
 		
 		method:get
 		
 		request:
+			site_id: 1,
 			currency: 币类型，如BTC、LTC、ETH ,
 			api_key: api_key可以在用户中心中获取 ,
 			timestamp: 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
@@ -185,11 +189,12 @@ getSingleCurrency()
 - 6.获得资产列表  
 getCurrencyList() 
 
-		url:/api/a/accounts/{apikey}/{timestamp}/{signType}/{sign}
+		url:/m/api/a/accounts/{site_id}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		method:get
 		
 		request:
+			site_id: 1,
 			api_key: api_key可以在用户中心中获取 ,
 			timestamp: 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
 			sign_type: 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
@@ -234,7 +239,7 @@ getCurrencyList()
 - 7.获得单个订单的交易明细（仅返回当前apikey对应数据）  
 getSingleOrderDetail() 
 
-		url:/m/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
+		url:/m/api/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		method:get
 		
@@ -318,7 +323,7 @@ getOrderList()
 - 9.获得已成交记录（仅返回当前apikey对应数据）  
 getSuccessedOrders() 
 
-		url:/m/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
+		url:/m/api/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		method:get
 		

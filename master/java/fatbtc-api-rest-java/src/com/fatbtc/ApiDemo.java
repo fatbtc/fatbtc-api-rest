@@ -175,7 +175,7 @@ public class ApiDemo{
 	 */
 	public static void getSingleCurrency() {
 		String reqUrl = url+"/m/api/a/account";
-//		/api/a/account/{currency}/{apikey}/{timestamp}/{signType}/{sign}
+//		/m/api/a/account/{currency}/{apikey}/{timestamp}/{signType}/{sign}
 		
 
 		try {
@@ -219,7 +219,7 @@ public class ApiDemo{
 	 */
 	public static void getCurrencyList() {
 		String reqUrl = url+"/m/api/a/accounts";
-//		/api/a/accounts/{apikey}/{timestamp}/{signType}/{sign}
+//		/m/api/a/accounts/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
 			Long timestamp = StringUtil.getTimeStamp();
@@ -260,7 +260,7 @@ public class ApiDemo{
 	 */
 	public static void getSingleOrderDetail() {
 		String reqUrl = url+"/m/api/o/order/trades";
-//		/m/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
+//		/m/api/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
 			String symbol="BTCFCNY";
@@ -304,7 +304,7 @@ public class ApiDemo{
 	 */
 	public static void getOrderList() {
 		String reqUrl = url+"/m/api/o/orders";
-//		/m/o/orders/{symbol}/{page}/{pageSize}/{status}/{apikey}/{timestamp}/{signType}/{sign}
+//		/m/api/o/orders/{symbol}/{page}/{pageSize}/{status}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
 			String symbol="BTCFCNY";
@@ -353,7 +353,7 @@ public class ApiDemo{
 	 */
 	public static void getSuccessedOrders() {
 		String reqUrl = url+"/m/api/t/trades";
-//		/m/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
+//		/m/api/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
 			String symbol="BTCFCNY";
