@@ -16,7 +16,6 @@ public class ApiDemo{
 	//从FatBTC申请的 api_secretapiKey和apiSecret
 	private static String apiKey="";
 	private static String apiSecret="";
-	
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
@@ -59,6 +58,7 @@ public class ApiDemo{
 		String orderNo = String.valueOf(System.currentTimeMillis());
 		try {
 			Map<String, Object> map = new HashMap<>();
+			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("o_no", orderNo);
 			map.put("o_price_type", "limit");
@@ -102,6 +102,7 @@ public class ApiDemo{
 		
 		try {
 			Map<String, Object> map = new HashMap<>();
+			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("id", 2);
 			map.put("o_no", orderNo);
@@ -141,6 +142,7 @@ public class ApiDemo{
 			Map<String, Object> map = new HashMap<>();
 			map.put("addr", 0x0000000000000000000000000000000000000000);
 			map.put("amount", 10);
+			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("currency", "ETH");
 			map.put("sign_type", signType);
@@ -182,13 +184,15 @@ public class ApiDemo{
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
+			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("sign_type", signType);
 			map.put("timestamp", timestamp);
 			String sign = MD5Util.createSign(map, apiSecret);
-//			拼接url成 /api/a/account/{currency}/{apikey}/{timestamp}/{signType}/{sign}
+//			拼接url成 /api/a/account/1/{currency}/{apikey}/{timestamp}/{signType}/{sign}
 			StringBuffer sBuffer = new StringBuffer(reqUrl);
-			sBuffer.append("/").append(currency)
+			sBuffer.append("/").append(1)
+					.append("/").append(currency)
 					.append("/").append(apiKey)
 					.append("/").append(timestamp)
 					.append("/").append(signType)
@@ -222,12 +226,14 @@ public class ApiDemo{
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
+			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("sign_type", signType);
 			map.put("timestamp", timestamp);
 			String sign = MD5Util.createSign(map, apiSecret);
 			StringBuffer sBuffer = new StringBuffer(reqUrl);
-			sBuffer.append("/").append(apiKey)
+			sBuffer.append("/").append(1)
+					.append("/").append(apiKey)
 					.append("/").append(timestamp)
 					.append("/").append(signType)
 					.append("/").append(sign);
