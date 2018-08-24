@@ -179,12 +179,11 @@ public class ApiDemo{
 		
 
 		try {
-			String currency = "BTC";
+			String currency = "FAT";
 			Long timestamp = StringUtil.getTimeStamp();
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
-			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("sign_type", signType);
 			map.put("timestamp", timestamp);
@@ -226,7 +225,6 @@ public class ApiDemo{
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
-			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("sign_type", signType);
 			map.put("timestamp", timestamp);
