@@ -58,7 +58,7 @@ public class MD5Util {
 	 * @return
 	 */
 	public static String createSign(Map<String, Object> params, String apiSecret) {
-		SortedMap<String, Object> sortedMap = new TreeMap<String, Object>(params);
+		SortedMap<String, Object> sortedMap = new TreeMap<String, Object>(params);//签名key按字母升序排序
 
 		StringBuffer sb = new StringBuffer();
 		Set es = sortedMap.entrySet();

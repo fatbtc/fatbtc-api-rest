@@ -221,7 +221,7 @@ public class ApiDemo{
 //		/m/api/a/accounts/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp(); //StringUtil.getTimeStamp();
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
@@ -390,7 +390,7 @@ public class ApiDemo{
 	 * request:timestamp 本地时间戳
 	 * response：{"status":1,"msg":"success","data":"1529995831"}, 成功时：data值为系统时间戳
 	 */
-	public static void getSystemTimeStamp() {
+	public static Long getSystemTimeStamp() {
 		String reqUrl = url+"/m/timestamp/";
 		
 		try {
@@ -400,11 +400,15 @@ public class ApiDemo{
 			sBuffer.append("/").append(timestamp);
 			
 			String response = HttpUtil.doGet(sBuffer.toString());
-			System.out.println(response);
+//			System.out.println(response);
 //			{"status":1,"msg":"success","data":"1529995831"}
+			ObjectMapper mapper = new ObjectMapper();
+			Map map = mapper.readValue(response, HashMap.class);
+			return Long.valueOf(map.get("data")+"");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 		
 	}
 

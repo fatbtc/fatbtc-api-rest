@@ -72,7 +72,8 @@ getSystemTimeStamp()
 			"msg":"success",
 			"data":系统时间戳 
 		}
-
+		
+		注意：交易请求返回 ILLEGAL_TIMESTAMP时，使用该方法返回的时间戳，带入请求参数
 
 - 2.创建订单  
 createOrder() 
@@ -92,7 +93,7 @@ createOrder()
 			sign: 使用api_secret对请求参数进行签名的结果 ,
 			sign_type: 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
 			symbol: 交易对名称，如BTCCNY、LTCCNY、ETHCNY ,
-			timestamp: 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
+			timestamp: 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳,
 			volume: 数量，对限价单，表示买入/卖出数量，对于市价买单，表示买入多少计价货币(如CNY)，市价卖单表示卖出多少基础货币(如BTC)
 		}
 		
