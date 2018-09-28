@@ -7,16 +7,14 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.fatbtc.util.HttpUtil;
 import com.fatbtc.util.MD5Util;
-import com.fatbtc.util.StringUtil;
 
 public class ApiDemo{
 	
-//	private static String url="https://www.fatbtc.us";//交易/提现
-	private static String url="http://192.168.0.9:81";//交易/提现
+	private static String url="https://www.fatbtc.us";//交易/提现
 	
 	//从FatBTC申请的 api_secretapiKey和apiSecret
-	private static String apiKey="1fe3cdd9-5944-4403-987e-9ebc93216e15";
-	private static String apiSecret="7aad2285edf8475719c3ef104b31245b";
+	private static String apiKey="";
+	private static String apiSecret="";
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
@@ -106,9 +104,9 @@ public class ApiDemo{
 			map.put("site_id", 1);
 			map.put("api_key", apiKey);
 			map.put("id", 8115);
-			map.put("o_no", "1538120503549");
+			map.put("o_no", orderNo);
 			map.put("symbol", "BTCFCNY");
-			map.put("timestamp", StringUtil.getTimeStamp());
+			map.put("timestamp", getSystemTimeStamp());
 			map.put("sign_type", signType);
 			map.put("sign", MD5Util.createSign(map, apiSecret));
 			
@@ -141,11 +139,11 @@ public class ApiDemo{
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Map<String, Object> map = new HashMap<>();
-			map.put("addr", "中国工商银行|北京|北京|235235|65454654564654564");
-			map.put("amount", 500);
+			map.put("addr", 0x000000000000000000000000000000);
+			map.put("amount", 1);
 			map.put("site_id", 1);
 			map.put("api_key", apiKey);
-			map.put("currency", "FCNY");
+			map.put("currency", "ETH");
 			map.put("sign_type", signType);
 			map.put("timestamp", getSystemTimeStamp());
 			map.put("sign", MD5Util.createSign(map, apiSecret));
@@ -181,7 +179,7 @@ public class ApiDemo{
 
 		try {
 			String currency = "FAT";
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
@@ -222,7 +220,7 @@ public class ApiDemo{
 //		/m/api/a/accounts/{apikey}/{timestamp}/{signType}/{sign}
 		
 		try {
-			Long timestamp = getSystemTimeStamp(); //StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
 			Map<String, Object> map = new HashMap<>();
@@ -264,7 +262,7 @@ public class ApiDemo{
 		try {
 			String symbol="BTCFCNY";
 			String id="8402";
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			Map<String, Object> map = new HashMap<>();
 			
@@ -310,7 +308,7 @@ public class ApiDemo{
 			int page=1;//从1开始
 			int pageSize=20;//最大20
 			int status=2;// 0表示未完成（挂单中），1表示已完成（含已取消），2表示所有
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			Map<String, Object> map = new HashMap<>();
 			
@@ -358,7 +356,7 @@ public class ApiDemo{
 			String symbol="BTCFCNY";
 			int page=1;//从1开始
 			int pageSize=20;//最大20
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			Map<String, Object> map = new HashMap<>();
 			
@@ -395,7 +393,7 @@ public class ApiDemo{
 		String reqUrl = url+"/m/timestamp/";
 		
 		try {
-			Long timestamp = StringUtil.getTimeStamp();
+			Long timestamp = getSystemTimeStamp();
 			
 			StringBuffer sBuffer = new StringBuffer(reqUrl);
 			sBuffer.append("/").append(timestamp);
