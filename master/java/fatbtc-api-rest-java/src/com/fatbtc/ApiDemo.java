@@ -19,17 +19,17 @@ public class ApiDemo{
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
-//		getSystemTimeStamp();
+		getSystemTimeStamp();
 		getSymbols();
 		
-//		createOrder();
-//		cancelOrder();
-//		withdraw();
-//		getSingleCurrency();
-//		getCurrencyList();
-//		getSingleOrderDetail();
-//		getOrderList();
-//		getSuccessedOrders();
+		createOrder();
+		cancelOrder();
+		withdraw();
+		getSingleCurrency();
+		getCurrencyList();
+		getSingleOrderDetail();
+		getOrderList();
+		getSuccessedOrders();
 		
 	}
 	
