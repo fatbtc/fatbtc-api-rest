@@ -74,6 +74,34 @@ getSystemTimeStamp()
 		
 		注意：交易请求返回 ILLEGAL_TIMESTAMP时，使用该方法返回的时间戳，带入请求参数
 
+- 2.获取系统支持的交易对   
+getSymbols() 
+  
+		url:/m/symbols/{site_id}/{timestamp}
+		
+		method:get
+                
+		request:
+			site_id: 1, 
+			timestamp: 时间戳
+		
+		response：
+		{
+			"status":1,
+			"msg":"success",
+			"symbols":
+			[{
+				"symbol":交易对,
+				"base_currency":基础货币,
+				"quote_currency":计价货币,
+				"price_precision":价格小数位,
+				"volume_precision":数量小数位,
+				"taker_fee":吃单手续费费率,
+				"maker_fee":挂单手续费费率
+			}]
+		}
+			
+
 - 2.创建订单  
 createOrder() 
 
