@@ -7,6 +7,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.fatbtc.util.HttpUtil;
 import com.fatbtc.util.MD5Util;
+import com.fatbtc.util.StringUtil;
 
 public class ApiDemo{
 	
@@ -18,16 +19,17 @@ public class ApiDemo{
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
-		getSystemTimeStamp();
+//		getSystemTimeStamp();
+		getSymbols();
 		
-		createOrder();
-		cancelOrder();
-		withdraw();
-		getSingleCurrency();
-		getCurrencyList();
-		getSingleOrderDetail();
-		getOrderList();
-		getSuccessedOrders();
+//		createOrder();
+//		cancelOrder();
+//		withdraw();
+//		getSingleCurrency();
+//		getCurrencyList();
+//		getSingleOrderDetail();
+//		getOrderList();
+//		getSuccessedOrders();
 		
 	}
 	
@@ -390,10 +392,10 @@ public class ApiDemo{
 	 * response：{"status":1,"msg":"success","data":"1529995831"}, 成功时：data值为系统时间戳
 	 */
 	public static Long getSystemTimeStamp() {
-		String reqUrl = url+"/m/timestamp/";
+		String reqUrl = url+"/m/timestamp";
 		
 		try {
-			Long timestamp = getSystemTimeStamp();
+			Long timestamp = StringUtil.getTimeStamp();
 			
 			StringBuffer sBuffer = new StringBuffer(reqUrl);
 			sBuffer.append("/").append(timestamp);
@@ -408,6 +410,31 @@ public class ApiDemo{
 			e.printStackTrace();
 		}
 		return null;
+		
+	}
+	
+	/**
+	 * 获得系统支持的交易对
+	 * 交易请求返回 ILLEGAL_TIMESTAMP时，使用该方法返回的时间戳
+	 * url:/m/symbols/{site_id}/{timestamp}
+	 * request:timestamp 本地时间戳
+	 * response：{"status":1,"msg":"success","symbols":[{...}]}, 成功时：data值为系统时间戳
+	 */
+	public static void getSymbols() {
+		String reqUrl = url+"/m/symbols";
+		
+		try {
+			Long timestamp = StringUtil.getTimeStamp();
+			
+			StringBuffer sBuffer = new StringBuffer(reqUrl);
+			sBuffer.append("/").append(1).append("/").append(timestamp);
+			
+			String response = HttpUtil.doGet(sBuffer.toString());
+			System.out.println(response);
+//			{"status":1,"msg":"success","symbols":[{"symbol":"FATBTC","base_currency":"FAT","quote_currency":"BTC","price_precision":8,"volume_precision":0,"taker_fee":0.00200000,"maker_fee":0.00200000}]}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
