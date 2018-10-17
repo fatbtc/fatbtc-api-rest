@@ -102,7 +102,7 @@ getSymbols()
 		}
 			
 
-- 2.创建订单  
+- 3.创建订单  
 createOrder() 
 
 		url:/order/api/order
@@ -132,7 +132,7 @@ createOrder()
 		}
 
 
-- 3.取消订单  
+- 4.取消订单  
 cancelOrder() 
 
 		url:/order/api/order
@@ -158,7 +158,7 @@ cancelOrder()
 		}
 
 
-- 4.提现  
+- 5.提现  
 withdraw() 
 
 		url:/order/api/withdraw
@@ -185,7 +185,7 @@ withdraw()
 	    }
 
 
-- 5.获得单个币资产  
+- 6.获得单个币资产  
 getSingleCurrency() 
 
 		url:/m/api/a/account/{site_id}/{currency}/{api_key}/{timestamp}/{sign_type}/{sign}
@@ -214,7 +214,7 @@ getSingleCurrency()
 		}
 
 
-- 6.获得资产列表  
+- 7.获得资产列表  
 getCurrencyList() 
 
 		url:/m/api/a/accounts/{site_id}/{apikey}/{timestamp}/{signType}/{sign}
@@ -264,7 +264,7 @@ getCurrencyList()
 		}
 
 
-- 7.获得单个订单的交易明细（仅返回当前apikey对应数据）  
+- 8.获得单个订单的交易明细（仅返回当前apikey对应数据）  
 getSingleOrderDetail() 
 
 		url:/m/api/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
@@ -301,7 +301,7 @@ getSingleOrderDetail()
 		}
 
 
-- 8.获得订单列表（仅返回当前apikey对应数据）  
+- 9.获得订单列表（仅返回当前apikey对应数据）  
 getOrderList() 
 
 		url:/m/api/o/orders
@@ -348,7 +348,7 @@ getOrderList()
 		}
 
 
-- 9.获得已成交记录（仅返回当前apikey对应数据）  
+- 10.获得已成交记录（仅返回当前apikey对应数据）  
 getSuccessedOrders() 
 
 		url:/m/api/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
