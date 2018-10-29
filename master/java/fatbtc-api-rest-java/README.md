@@ -11,4 +11,4 @@
 ```
  
  
-接口说明：[https://github.com/fatbtc/fatbtc-api-rest](https://github.com/fatbtc/fatbtc-api-rest)
+- 2.接口说明详见：[https://github.com/fatbtc/fatbtc-api-rest](https://github.com/fatbtc/fatbtc-api-rest)
