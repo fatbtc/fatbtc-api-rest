@@ -25,6 +25,7 @@ public class HttpUtil {
 			CloseableHttpClient client = HttpClients.createDefault();
 			// 发送get请求
 			HttpGet httpGet = new HttpGet(url);
+			httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
 			httpGet.setHeader("Accept", "application/json");
 
 			HttpResponse response = client.execute(httpGet);
@@ -43,6 +44,7 @@ public class HttpUtil {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		
 		HttpPost httpPost = new HttpPost(url);
+		httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
 		httpPost.setHeader("Accept", "application/json");
 		httpPost.setHeader("Content-Type", "application/json");
 		httpPost.setEntity(new StringEntity(params ,"utf-8"));
@@ -79,6 +81,7 @@ public class HttpUtil {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		
 		HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(url);
+		httpDelete.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36");
 		httpDelete.setHeader("Accept", "application/json");
 		httpDelete.setHeader("Content-Type", "application/json");
 		httpDelete.setEntity(new StringEntity(params ,"utf-8"));
