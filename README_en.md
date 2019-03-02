@@ -1,5 +1,5 @@
 # fatbtc-api-rest
-FatBTC Rest Api Java version example:：[https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java](https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java)
+FatBTC Rest Api Example For Java：[https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java](https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java)
 
 
 ## Notices
