@@ -1,9 +1,10 @@
 # fatbtc-api-rest
 FatBTC Rest Api 
 
+Api Docs in English: https://github.com/fatbtc/fatbtc-api-rest/blob/master/README_en.md
+
 Java版示例：[https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java](https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/java/fatbtc-api-rest-java)
 
-(Interface description: https://github.com/fatbtc/fatbtc-api-rest/blob/master/README_en.md)
 
 
 ## 注意事项
