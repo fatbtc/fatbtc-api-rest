@@ -1,4 +1,4 @@
-# FatBTC Rest Api Java版示例 (FatBTC Rest Api Java version example)
+# FatBTC Rest Api Java版示例 (FatBTC Rest Api example for Java)
 
 
 ## 注意事项(Notes)
