@@ -14,4 +14,4 @@
  
 - 2.接口说明详见：[https://github.com/fatbtc/fatbtc-api-rest](https://github.com/fatbtc/fatbtc-api-rest)
  
-    Interface description: [https://github.com/fatbtc/fatbtc-api-rest](https://github.com/fatbtc/fatbtc-api-rest)
+    Interface description: [https://github.com/fatbtc/fatbtc-api-rest/blob/master/README_en.md](https://github.com/fatbtc/fatbtc-api-rest/blob/master/README_en.md)
