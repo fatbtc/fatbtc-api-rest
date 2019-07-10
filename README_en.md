@@ -37,7 +37,9 @@ FatBTC Rest Api Example For Java：[https://github.com/fatbtc/fatbtc-api-rest/tr
 		
 		3. data: data, see interface description 
 	
-	 
+
+- 3.The URL prefix in this example is: https://www.fatbtc.com (Recommended for users in mainland China access https://www.fatbtc.us)
+
  
 ## Interface Description
 - 1.Get the system timestamp  
