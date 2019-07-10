@@ -57,9 +57,11 @@ Java版示例：[https://github.com/fatbtc/fatbtc-api-rest/tree/master/master/ja
 		
 		3. data: 数据, 详见接口说明 
 	
-	 
+- 3.本示例内url前缀为：https://www.fatbtc.com (建议中国大陆用户使用https://www.fatbtc.us)
  
 ## 接口说明
+
+
 - 1.获得系统时间戳  
 getSystemTimeStamp() 
   
