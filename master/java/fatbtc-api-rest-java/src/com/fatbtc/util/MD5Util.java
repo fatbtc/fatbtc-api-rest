@@ -91,6 +91,7 @@ public class MD5Util {
 		String actualSign = "";
 		if ("MD5".equals(params.get("sign_type"))) {
 			//加密字符串取28位
+			//crypto string takes the first 28 bits
 			actualSign = MD5Util.getMD5String(valueToDigest, 28);
 		} else if ("HmacSHA256".equals(params.get("sign_type"))) {
 			byte[] hash = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, apiSecret).hmac(valueToDigest);
@@ -98,6 +99,7 @@ public class MD5Util {
 			//因为HmacSHA256加密后的密文带有/等字符串导致get请求失效,这里再进行一次MD5加密
 			//加密字符串取28位
 			//MD5 crypto needs to perform again as the HMAC SHA256 crypto ciphertext has a /, and other strings that invalidate the get request.
+			//crypto string takes the first 28 bits
 			actualSign = MD5Util.getMD5String(actualSign, 28);
 		}
 
