@@ -40,6 +40,9 @@ FatBTC Rest Api Example For Java：[https://github.com/fatbtc/fatbtc-api-rest/tr
 
 - 3.The URL prefix in this example is: https://www.fatbtc.com (Recommended for users in mainland China access https://www.fatbtc.us)
 
+
+- 4.The signature and signature method related to the interface description (apikey, timestamp, signtype, and the details of thesignature method):
+[https://github.com/fatbtc/fatbtc-api-rest/blob/master/master/java/fatbtc-api-rest-java/src/com/fatbtc/ApiDemo.java] MD5Util.createSign()
  
 ## Interface Description
 - 1.Get the system timestamp  
