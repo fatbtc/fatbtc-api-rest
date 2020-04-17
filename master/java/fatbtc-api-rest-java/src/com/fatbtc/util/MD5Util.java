@@ -17,7 +17,7 @@ public class MD5Util {
 
 	/**
 	 * 生成32位MD5值
-         * generate a 32-bit MD5 value
+     * generate a 32-bit MD5 value
 	 */
 	private static final char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5',
 			'6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
