@@ -17,6 +17,7 @@ public class MD5Util {
 
 	/**
 	 * 生成32位MD5值
+         * generate a 32-bit MD5 value
 	 */
 	private static final char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5',
 			'6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -52,13 +53,16 @@ public class MD5Util {
 	
 	/**
 	 * 签名验证
+	 * signature verification
 	 * 
 	 * @param params
 	 * @param api_secret
 	 * @return
 	 */
 	public static String createSign(Map<String, Object> params, String apiSecret) {
-		SortedMap<String, Object> sortedMap = new TreeMap<String, Object>(params);//签名key按字母升序排序
+		//签名key按字母升序排序
+		//signature key sorted in ascending alphabetical order
+		SortedMap<String, Object> sortedMap = new TreeMap<String, Object>(params);
 
 		StringBuffer sb = new StringBuffer();
 		Set es = sortedMap.entrySet();
@@ -72,9 +76,13 @@ public class MD5Util {
 			}
 		}
 		if ("MD5".equals(params.get("sign_type"))) {
-			sb.append("apiSecret=" + apiSecret); // MD5签名时，apiSecret放在最后
+			// MD5签名时，apiSecret放在最后
+			// when signing with MD5, apiSecret comes last
+			sb.append("apiSecret=" + apiSecret); 
 		} else if ("HmacSHA256".equals(params.get("sign_type"))) {
-			sb.deleteCharAt(sb.length() - 1); // 删除最后的&
+			// 删除最后的&
+			// delete the last &
+			sb.deleteCharAt(sb.length() - 1); 
 		} else {
 			return null;
 		}
@@ -82,11 +90,17 @@ public class MD5Util {
 		String valueToDigest = sb.toString();
 		String actualSign = "";
 		if ("MD5".equals(params.get("sign_type"))) {
+			//加密字符串取28位
+			//crypto string takes the first 28 bits
 			actualSign = MD5Util.getMD5String(valueToDigest, 28);
 		} else if ("HmacSHA256".equals(params.get("sign_type"))) {
 			byte[] hash = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, apiSecret).hmac(valueToDigest);
 			actualSign = Base64.encodeBase64String(hash);
-			actualSign = MD5Util.getMD5String(actualSign, 28);//因为HmacSHA256加密后的密文带有/等字符串导致get请求失效,这里再进行一次MD5加密
+			//因为HmacSHA256加密后的密文带有/等字符串导致get请求失效,这里再进行一次MD5加密
+			//加密字符串取28位
+			//MD5 crypto needs to perform again as the HMAC SHA256 crypto ciphertext has a /, and other strings that invalidate the get request.
+			//crypto string takes the first 28 bits
+			actualSign = MD5Util.getMD5String(actualSign, 28);
 		}
 
 		return actualSign;
