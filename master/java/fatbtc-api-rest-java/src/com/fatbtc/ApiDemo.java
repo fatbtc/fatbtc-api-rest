@@ -19,6 +19,7 @@ public class ApiDemo{
 	private static String signType="MD5";//MD5,HmacSHA256
 	
 	public static void main(String[] args) {
+		long t1 = System.currentTimeMillis();
 		getSystemTimeStamp();
 		getSymbols();
 		
@@ -30,6 +31,8 @@ public class ApiDemo{
 		getSingleOrderDetail();
 		getOrderList();
 		getSuccessedOrders();
+		getOrderDetail();
+		System.out.println(System.currentTimeMillis()-t1);
 		
 	}
 	
@@ -180,7 +183,7 @@ public class ApiDemo{
 		
 
 		try {
-			String currency = "FAT";
+			String currency = "BTC";
 			Long timestamp = getSystemTimeStamp();
 			
 			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
@@ -339,7 +342,7 @@ public class ApiDemo{
 	/**
 	 * 获得已成交记录（仅返回当前apikey对应数据）
 	 * 
-	 * symbol:交易对名称，如BTCCNY、LTCCNY、ETHCNY
+	 * symbol:交易对名称，如BTCFCNY、LTCFCNY、ETHFCNY
 	 * page：页数，从1开始，
 	 * pageSize：每页记录数，最大20，默认按时间倒叙排列 
 	 * status 0表示未完成（挂单中），1表示已完成（含已取消），2表示所有
@@ -438,4 +441,89 @@ public class ApiDemo{
 		
 	}
 
+	/**
+	 * 获得单个订单的详情（仅返回当前apikey对应数据）
+	 * 
+	 * symbol:交易对名称，如BTCFCNY、LTCFCNY、ETHFCNY
+	 * id:订单id
+	 * api_key (string): api_key可以在用户中心中获取 ,
+	 * timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
+	 * sign_type (string): 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
+	 * sign (string): 使用api_secret对请求参数进行签名的结果 ,
+	 * 
+	 * apikey、timestamp、signType和sign详见签名方法
+	 */
+	public static void getOrderDetail() {
+		String reqUrl = url+"/m/api/o/order/detail";
+//		/m/api/o/order/detail/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
+		
+		try {
+			String symbol="BTCFCNY";
+			String id="1";
+			Long timestamp = getSystemTimeStamp();
+			
+			Map<String, Object> map = new HashMap<>();
+			
+			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
+			map.put("api_key", apiKey);
+			map.put("sign_type", signType);
+			map.put("timestamp", timestamp);
+			String sign = MD5Util.createSign(map, apiSecret);
+			StringBuffer sBuffer = new StringBuffer(reqUrl);
+			sBuffer.append("/").append(symbol)
+					.append("/").append(id)
+					.append("/").append(apiKey)
+					.append("/").append(timestamp)
+					.append("/").append(signType)
+					.append("/").append(sign);
+			String response = HttpUtil.doGet(sBuffer.toString());
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	
+
+	/**
+	 * 获取币充值地址
+	 * currency (string): 币类型，如BTC、LTC、ETH ,
+	 * api_key (string): api_key可以在用户中心中获取 ,
+	 * timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
+	 * sign_type (string): 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
+	 * sign (string): 使用api_secret对请求参数进行签名的结果 ,
+	 * 
+	 * apikey、timestamp、signType和sign详见签名方法
+	 */
+	public static String getDepositAddr() {
+//		/m/api/a/deposit/addr/{site_id}/{currency}/{apikey}/{timestamp}/{signType}/{sign}
+		String reqUrl = url+"/m/api/a/deposit/addr";
+		
+		String currency = "BTC";
+		try {
+			Long timestamp=getSystemTimeStamp();
+			
+			//参与签名的只需要传3个参数 api_key, sign_type, timestamp
+			Map<String, Object> map = new HashMap<>();
+			map.put("api_key", apiKey);
+			map.put("sign_type", signType);
+			map.put("timestamp", timestamp);
+			String sign = MD5Util.createSign(map, apiSecret);
+//			拼接url成 /api/a/account/1/{currency}/{apikey}/{timestamp}/{signType}/{sign}
+			
+			StringBuffer sBuffer = new StringBuffer(reqUrl);
+			sBuffer.append("/").append(1)
+			.append("/").append(currency)
+			.append("/").append(apiKey)
+			.append("/").append(timestamp)
+			.append("/").append(signType)
+			.append("/").append(sign);
+			String response = HttpUtil.doGet(sBuffer.toString());
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

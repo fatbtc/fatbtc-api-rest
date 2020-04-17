@@ -49,7 +49,7 @@ public class HttpUtil {
 		httpPost.setHeader("Content-Type", "application/json");
 		httpPost.setEntity(new StringEntity(params ,"utf-8"));
 //		httpPost.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 20000);
-
+		
 		CloseableHttpResponse response = null;
 		
 		try {
