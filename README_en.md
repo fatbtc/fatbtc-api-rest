@@ -85,7 +85,8 @@ getSymbols()
                 
 		request:
 			site_id: 1, 
-			timestamp: timestamp		
+			timestamp: timestamp
+		
 		response：
 		{
 			"status":1,
@@ -96,7 +97,8 @@ getSymbols()
 				"base_currency": base cryptocurrency,
 				"quote_currency": quote_currency,
 				"price_precision": the decimal place of the price,
-				"volume_precision": the decimal place of the amount				"taker_fee": fee for taker,
+				"volume_precision": the decimal place of the amount				
+				"taker_fee": fee for taker,
 				"maker_fee": fee for marker			
 			}]
 		}
