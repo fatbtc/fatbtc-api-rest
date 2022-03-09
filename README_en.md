@@ -97,7 +97,8 @@ getSymbols()
 				"quote_currency": quote_currency,
 				"price_precision": the decimal place of the price,
 				"volume_precision": the decimal place of the amount				"taker_fee": fee for taker,
-				"maker_fee": fee for marker			}]
+				"maker_fee": fee for marker			
+			}]
 		}
 			
 
@@ -148,7 +149,8 @@ cancelOrder()
 			sign_type:Use api_secret to sign the request parameters,which is currently supporting MD5, HmacSHA256.Please note that they are case sensitive, and the signature method is described separately.			
 			symbol: the name of the trading pair，such as BTCCNY、LTCCNY、ETHCNY ,
 			timestamp:timestamp, note: Some systems take the value of milliseconds and need to convert to seconds (10 digits). The system determines that the error is within 10 seconds of the legal timestamp.
-}	
+		}
+		
 		response：
 		{
 		  "status": 1,
