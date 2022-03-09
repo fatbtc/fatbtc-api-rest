@@ -22,13 +22,27 @@ FatBTC Rest Api Example For Java：[https://github.com/fatbtc/fatbtc-api-rest/tr
 			STOP_EX: suspend service   
 			ILLEGAL_IP: IP address error    
 			API_NO_PRIVILEGE: APIKey has no privilege   
-			ILLEGAL_SYMBOL: The trading pair does not exist			ILLEGAL_TRADE_PAIR:The trading pair does not exist or is not enabled			ILLEGAL_VOLUME: incorrect order amount			ILLEGAL_PRICE: incorrect order price			ILLEGAL_PRICE_TYPE:incorrect order price type (limit market)			ILLEGAL_O_TYPE: incorrect order type (buy sell)			ILLEGAL_SOURCE: incorrect order source (API web app)
-			LITTLE_THAN_MIN_BUY_VOLUME: The amount is lower than the minimum purchase amount			LITTLE_THAN_MIN_SELL_VOLUME: The amount is lower than the minimum sold amount
+			ILLEGAL_SYMBOL: The trading pair does not exist			
+			ILLEGAL_TRADE_PAIR:The trading pair does not exist or is not enabled			
+			ILLEGAL_VOLUME: incorrect order amount			
+			ILLEGAL_PRICE: incorrect order price			
+			ILLEGAL_PRICE_TYPE:incorrect order price type (limit market)			
+			ILLEGAL_O_TYPE: incorrect order type (buy sell)			
+			ILLEGAL_SOURCE: incorrect order source (API web app)
+			LITTLE_THAN_MIN_BUY_VOLUME: The amount is lower than the minimum purchase amount			
+			LITTLE_THAN_MIN_SELL_VOLUME: The amount is lower than the minimum sold amount
 			STOP_BUY_EX: suspend buying
 			STOP_SELL_EX: suspend selling
-			ILLEGAL_PRICE_PRECISION: price decimal is not accurate			ILLEGAL_VOLUME_PRECISION: amount decimal is not accurate			NO_SUFFICIENT_FUNDS: insufficient balances			ILLEGAL_CURRENCY: cryptocurrency does not exist
+			ILLEGAL_PRICE_PRECISION: price decimal is not accurate			
+			ILLEGAL_VOLUME_PRECISION: amount decimal is not accurate			
+			NO_SUFFICIENT_FUNDS: insufficient balances			
+			ILLEGAL_CURRENCY: cryptocurrency does not exist
 			CANNOT_WITHDRAW: withdrawals for the current cryptocurrency is suspended
-			ILLEGAL_ADDRESS: wrong withdrawal address		ILLEGAL_WITHDRAW_AMOUNT: wrong withdrawal amount		WITHDRAW_AMOUNT_MIN_THAN_MIN: the withdrawal amount is less than the minimum withdrawal amount			NOT_AUTH_IDENTITY:unverified			WITH_DRAW_THAN_MAX_V1: exceeds 24H max.withdrawal for KYC verification 1
+			ILLEGAL_ADDRESS: wrong withdrawal address		
+			ILLEGAL_WITHDRAW_AMOUNT: wrong withdrawal amount		
+			WITHDRAW_AMOUNT_MIN_THAN_MIN: the withdrawal amount is less than the minimum withdrawal amount			
+			NOT_AUTH_IDENTITY:unverified			
+			WITH_DRAW_THAN_MAX_V1: exceeds 24H max.withdrawal for KYC verification 1
 			WITH_DRAW_THAN_MAX_V2: exceeds 24H max.withdrawal for KYC verification 2
 
 			ORDER_DOES_NOT_EXIST: order does not exist or order number is incorrect 
@@ -96,19 +110,25 @@ createOrder()
 		
 		request: 
 		{
-			api_key: api_key can generate the API key in Account,			site_id: 1,
-			o_no: order number, unique in current transaction pair,			o_price_type: price type: limit, market, respectively represent limit order, market order,
-			o_type: order type: buy, sell, which means sell, buy,			price: price: for the limit order, it means the buy/sell price. For the market order, please fill in 0
+			api_key: api_key can generate the API key in Account,			
+			site_id: 1,
+			o_no: order number, unique in current transaction pair,			
+			o_price_type: price type: limit, market, respectively represent limit order, market order,
+			o_type: order type: buy, sell, which means sell, buy,			
+			price: price: for the limit order, it means the buy/sell price. For the market order, please fill in 0
 			sign: the result of signing the request parameters using api_secret,
-			sign_type: use api_secret to sign the request parameters.Currently, MD5 and HmacSHA256 are supported.Please note that they are case sensitive, and the signature method is described separately.			symbol: the name of the trading pair,such as BTCCNY, LTCCNY, ETHCNY,
-			timestamp: timestamp: note: some of the values taken by the system are in the level of milliseconds, which need to be converted into seconds (10 digits). The system determines that the error of plus or minus 10 seconds is the legal timestamp.			volume: aoumt, for the limit order, indicating the number of buy/sell, for the market price, indicating how many cryptocurrency to buy (such as CNY), the market price to sell how many base cryptocurrency (such as BTC)
+			sign_type: use api_secret to sign the request parameters.Currently, MD5 and HmacSHA256 are supported.Please note that they are case sensitive, and the signature method is described separately.			
+			symbol: the name of the trading pair,such as BTCCNY, LTCCNY, ETHCNY,
+			timestamp: timestamp: note: some of the values taken by the system are in the level of milliseconds, which need to be converted into seconds (10 digits). The system determines that the error of plus or minus 10 seconds is the legal timestamp.			
+			volume: aoumt, for the limit order, indicating the number of buy/sell, for the market price, indicating how many cryptocurrency to buy (such as CNY), the market price to sell how many base cryptocurrency (such as BTC)
 		}
 		
 		response：
 		{
 		  "status": 1,
 		  "msg": "success",
-		  "data": order id		}
+		  "data": order id		
+		}
 
 
 - 4.Cancel the order  
@@ -122,8 +142,11 @@ cancelOrder()
 		{
 			api_key: api_key can be generated in Account section on FatBTC.
 			id: order ID
-			o_no: order number,			site_id: 1,
-			sign: the result of signing the request parameter with api_secret,			sign_type:Use api_secret to sign the request parameters,which is currently supporting MD5, HmacSHA256.Please note that they are case sensitive, and the signature method is described separately.			symbol: the name of the trading pair，such as BTCCNY、LTCCNY、ETHCNY ,
+			o_no: order number,			
+			site_id: 1,
+			sign: the result of signing the request parameter with api_secret,			
+			sign_type:Use api_secret to sign the request parameters,which is currently supporting MD5, HmacSHA256.Please note that they are case sensitive, and the signature method is described separately.			
+			symbol: the name of the trading pair，such as BTCCNY、LTCCNY、ETHCNY ,
 			timestamp:timestamp, note: Some systems take the value of milliseconds and need to convert to seconds (10 digits). The system determines that the error is within 10 seconds of the legal timestamp.
 }	
 		response：
@@ -143,7 +166,9 @@ withdraw()
 		request: 
 		{
 			addr: withdraw address
-			amount: withdraw amount			api_key: api_key can generate the API key in Account,			site_id: 1,
+			amount: withdraw amount			
+			api_key: api_key can generate the API key in Account,			
+			site_id: 1,
 			currency: cryptocurrency type, such as BTC,LTC,ETH,
 			sign: the result of signing the request parameter with api_secret,
 			sign_type: use api_secret to sign the request parameters.Currently, MD5 and HmacSHA256 are supported, and the signature method is described separately.
