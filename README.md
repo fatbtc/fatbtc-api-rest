@@ -431,7 +431,7 @@ getOrderDetail()
 				source: 订单来源：api、Web、Wap、App ,
 				volume: 数量，对限价单，表示下单时指定的数量，对于市价买单，表示买多少计价货币，市价卖单表示卖多少基础货币
 			}
-			timestamp: timestampe
+			timestamp: timestamp
 			
 		}
 
