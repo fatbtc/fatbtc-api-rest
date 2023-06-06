@@ -371,7 +371,7 @@ getSuccessedOrders()
 		response:
 		{
 			"msg": "success",
-		    "status": 1,
+		    	"status": 1,
 			symbol: trading pair,
 			timestamp: timestampe
 			total: total records,
@@ -388,7 +388,48 @@ getSuccessedOrders()
 			}]
 		}
 
+- 11.Get the details of a single order(only return the corresponding data of the current apikey)
+getOrderDetail() 
 
+		url:/m/api/o/order/detail/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
+		
+		method:get
+		
+		request:
+			 symbol:the name of the trading pair, such as BTCCNY, LTCCNY, ETHCNY
+			 id:id
+			 api_key: api_key can generate the API key in Account,
+			timestamp:  timestamp, note: some of the vaule system to take the value of milliseconds, need to be converted into seconds (10 digits), the system determines the error of plus or minus 10 seconds as the legal timestamp. ,
+			sign_type: Use api_secret to sign the request parameters. Currently, MD5 and HmacSHA256 are supported, and the signature method is described separately.
+			sign: the result of signing the request parameter with api_secret ,
+			(apikey, timestamp, signType, and sign are detailed in the signature method)
+		response:
+		{
+			"msg": "success",
+			"status": 1,
+			order:{
+				id: id ,
+				o_no: order number ,
+				base_currency: base cryptocurrency ,
+				cancel_time: cancel time ,
+				create_time: create time ,
+				create_time_unix: create timestamp ,
+				done_amount: executed amount,
+				done_avg_price: average price of executed transaction,
+				done_fee: transaction fee, the seller is the currency of the calculation, and the buyer is the base cryptocurrency,
+				done_volume: executed amount,
+				fee_currency:  cryptocurrencies charged as fees,
+				o_price_type: price type：limit, market,is limit order, market order
+				o_status: watting pending,partial-done partial-completed,done completed,partial-canceled partial-canceled,canceled cancel,
+				o_type: order type：buy buy order, sell sell order,
+				price: price, for the limit order, indicating the price specified when placing the order, for the market order, the default is 0,,
+				quote_currency: quote currency ,
+				source: Order source：api, Web, Wap, App,
+				volume: amount, for the limit order, indicating the amount specified when placing the order, for the market order, it means how many cryptocurrency to buy, and the market price indicates how many the base cryptocurrency is sold
+			}
+			timestamp: timestampe
+			
+		}
 
 
 
