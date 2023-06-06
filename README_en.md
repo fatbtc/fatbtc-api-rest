@@ -340,7 +340,7 @@ getOrderList()
 				id: id ,
 				o_no: order number
 				o_price_type: price type：limit, market,is limit order, market order
-				o_status: watting pending,partial-done partial-completed,done completed,partial-canceled partial-canceled,canceled cancel,
+				o_status: watting: pending,partial-done: partial-completed,done: completed,partial-canceled: partial-canceled,canceled: cancel,
 				o_type: order type：buy, sell is sell order,buy order,
 				price: price, for the limit order, indicating the price specified when placing the order, for the market order, the default is 0,
 				quote_currency: quote cryptocurrency,
@@ -420,9 +420,9 @@ getOrderDetail()
 				done_volume: executed amount,
 				fee_currency:  cryptocurrencies charged as fees,
 				o_price_type: price type：limit, market,is limit order, market order
-				o_status: watting pending,partial-done partial-completed,done completed,partial-canceled partial-canceled,canceled cancel,
+				o_status: watting: pending,partial-done: partial-completed,done: completed,partial-canceled: partial-canceled,canceled: cancel,
 				o_type: order type：buy buy order, sell sell order,
-				price: price, for the limit order, indicating the price specified when placing the order, for the market order, the default is 0,,
+				price: price, for the limit order, indicating the price specified when placing the order, for the market order, the default is 0,
 				quote_currency: quote currency ,
 				source: Order source：api, Web, Wap, App,
 				volume: amount, for the limit order, indicating the amount specified when placing the order, for the market order, it means how many cryptocurrency to buy, and the market price indicates how many the base cryptocurrency is sold
