@@ -392,7 +392,48 @@ getSuccessedOrders()
 				volume: 成交数量
 			}]
 		}
+- 11.获得单个订单的详情（仅返回当前apikey对应数据）
+getOrderDetail() 
 
+		url:/m/api/o/order/detail/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
+		
+		method:get
+		
+		request:
+			 symbol:交易对名称，如BTCCNY、LTCCNY、ETHCNY
+			 id:订单id
+			 api_key (string): api_key可以在用户中心中获取 ,
+			 timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。 ,
+			 sign_type (string): 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
+			 sign (string): 使用api_secret对请求参数进行签名的结果 ,
+			 (apikey、timestamp、signType和sign详见签名方法)
+		response:
+		{
+			"msg": "success",
+			"status": 1,
+			order:{
+				id: id ,
+				o_no: 订单号 ,
+				base_currency: 基础货币 ,
+				cancel_time: 撤销时间 ,
+				create_time: 创建时间 ,
+				create_time_unix: 创建时间戳 ,
+				done_amount: 已成交总额 ,
+				done_avg_price: 已成交均价 ,
+				done_fee: 已成交手续费，卖出方为计价货币，买入方为基础货币 ,
+				done_volume: 已成交数量 ,
+				fee_currency: 已成交手续费单位 ,
+				o_price_type: 价格类型：limit、market，即限价单、市价单 ,
+				o_status: watting 等待中,partial-done 部分成交,done 成交,partial-canceled 部分成交撤单,canceled 撤单 ,
+				o_type: 订单类型：buy、sell，即卖单、买单 ,
+				price: 价格，对限价单，表示下单时指定的价格，对于市价单，默认为0 ,
+				quote_currency: 计价货币 ,
+				source: 订单来源：api、Web、Wap、App ,
+				volume: 数量，对限价单，表示下单时指定的数量，对于市价买单，表示买多少计价货币，市价卖单表示卖多少基础货币
+			}
+			timestamp: timestampe
+			
+		}
 
 
 
