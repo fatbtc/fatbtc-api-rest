@@ -216,7 +216,7 @@ getSingleCurrency()
 		}
 
 
-- 7.get a list of assets
+- 7.get a list of assets  
 getCurrencyList() 
 
 		url:/m/api/a/accounts/{site_id}/{apikey}/{timestamp}/{signType}/{sign}
@@ -266,7 +266,7 @@ getCurrencyList()
 		}
 
 
-- 8.get the transaction details of a single order (only return the corresponding data of the current apikey)
+- 8.get the transaction details of a single order (only return the corresponding data of the current apikey)  
 getSingleOrderDetail() 
 
 		url:/m/api/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
@@ -303,7 +303,7 @@ getSingleOrderDetail()
 		}
 
 
-- 9.Get the order list (only return the corresponding data of the current apikey)
+- 9.Get the order list (only return the corresponding data of the current apikey)  
 getOrderList() 
 
 		url:/m/api/o/orders
@@ -350,7 +350,7 @@ getOrderList()
 		}
 
 
-- 10.Get the transaction record (only return the corresponding data of the current apikey)
+- 10.Get the transaction record (only return the corresponding data of the current apikey)  
 getSuccessedOrders() 
 
 		url:/m/api/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
@@ -388,7 +388,7 @@ getSuccessedOrders()
 			}]
 		}
 
-- 11.Get the details of a single order(only return the corresponding data of the current apikey)
+- 11.Get the details of a single order(only return the corresponding data of the current apikey)  
 getOrderDetail() 
 
 		url:/m/api/o/order/detail/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
