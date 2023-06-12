@@ -435,7 +435,28 @@ getOrderDetail()
 			
 		}
 
+- 12.取消全部订单  
+cancelOrderAll() 
 
+		url:/order/api/order_all
+		
+		method:delete
+		
+		request:
+		{
+			api_key: api_key可以在用户中心中获取 ,
+			site_id: 1,
+			sign: 使用api_secret对请求参数进行签名的结果 ,
+			sign_type: 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
+			symbol: 交易对名称，如BTCCNY、LTCCNY、ETHCNY ,
+			timestamp: 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。
+		}
+		
+		response：
+		{
+		  "status": 1,
+		  "msg": "success"
+		}
 
 
 
