@@ -149,6 +149,48 @@ public class ApiDemo{
 		}
 	}
 	
+	/**
+	 * 取消全部订单
+	 * Cancel all order
+	 * 
+	 * api_key (string): api_key可以在用户中心中获取 ,
+	 * sign (string): 使用api_secret对请求参数进行签名的结果 ,
+	 * sign_type (string): 使用api_secret对请求参数进行签名的方法，目前支持MD5、HmacSHA256，注意大小写，签名方法详见单独说明 ,
+	 * symbol (string): 交易对名称，如BTCCNY、LTCCNY、ETHCNY ,
+	 * timestamp (integer): 时间戳，注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)，系统判定误差正负10秒内为合法时间戳。
+	 * 
+	 * api_key (string): api_key can be applied from the Account - API management,
+	 * sign (string): Results of using api_secret to sign request parameters,
+	 * sign_type (string): The method of using api_secret to sign the request parameters, currently supports MD5, HmacSHA256, note the capitalization, the signature method is detailed in a separate link,
+	 * symbol (string): Name of the trading pair, such as: BTCCNY,LTCCNY,ETHCNY.
+	 * timestamp (integer): Timestamp Note: the value taken by the partial system is milliseconds, which needs to be converted into seconds (10 digits), and the system determines that the error is within plus or minus 10 seconds as the legal timestamp.
+    	 * 
+	 * apikey、timestamp、signType和sign详见签名方法
+	 * For details of apikey, timestamp, signType and sign,please refer to the signature method
+	 */
+	public static void cancelOrderAll() {
+		String reqUrl = url+"/order/api/order_all";
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			Map<String, Object> map = new HashMap<>();
+			map.put("site_id", 1);
+			map.put("api_key", apiKey);
+			map.put("symbol", "BTCUSDT");
+			map.put("timestamp", getSystemTimeStamp());
+			map.put("sign_type", signType);
+			map.put("sign", MD5Util.createSign(map, apiSecret));
+			
+			String params = mapper.writeValueAsString(map);
+			String response = HttpUtil.doDeleteJson(reqUrl, params);
+			System.out.println(response);
+//			Success：{"status":1,"msg":"success"}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * 提现
