@@ -441,7 +441,28 @@ getOrderDetail()
 		}
 
 
+- 12.Cancel all order  
+cancelOrderAll() 
 
+		url:/order/api/order_all
+		
+		method:delete
+		
+		request:
+		{
+			api_key: api_key can be generated in Account section on FatBTC.
+			site_id: 1,
+			sign: the result of signing the request parameter with api_secret,			
+			sign_type:Use api_secret to sign the request parameters,which is currently supporting MD5, HmacSHA256.Please note that they are case sensitive, and the signature method is described separately.			
+			symbol: the name of the trading pair，such as BTCCNY、LTCCNY、ETHCNY ,
+			timestamp:timestamp, note: Some systems take the value of milliseconds and need to convert to seconds (10 digits). The system determines that the error is within 10 seconds of the legal timestamp.
+		}
+		
+		response：
+		{
+		  "status": 1,
+		  "msg": "success"
+		}
 
 
 
