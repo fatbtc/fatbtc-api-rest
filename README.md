@@ -311,7 +311,7 @@ getSingleOrderDetail()
 - 9.获得订单列表（仅返回当前apikey对应数据）  
 getOrderList() 
 
-		url:/m/api/o/orders
+		url:/m/api/o/orders/{symbol}/{page}/{pageSize}/{status}/{apikey}/{timestamp}/{signType}/{sign}
 		
 		method:get
 		
